@@ -5,7 +5,7 @@ import { Menu, X } from 'lucide-react';
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'Replacement Tool', href: '/tool' },
+  { name: 'Lyric Tool', href: '/tool' },
   { name: 'Contact', href: '/contact' },
 ];
 
