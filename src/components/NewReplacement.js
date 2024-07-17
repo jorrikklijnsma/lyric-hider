@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Plus } from 'lucide-react';
 
 export const NewReplacement = ({ onAddReplacement, processedText, onBulkReplace }) => {
   const [original, setOriginal] = useState('');
@@ -33,36 +34,43 @@ export const NewReplacement = ({ onAddReplacement, processedText, onBulkReplace 
     }
   };
 
-  return (
-    <div className="mb-4">
-      <h2 className="text-lg font-semibold mb-2">Add/Update Replacement</h2>
-      <form onSubmit={handleSubmit} className="mb-2">
+  const setItemChange = (item) => () => {
+    setOriginal(item.original);
+    setReplacement(item.replacement);
+  }
+
+return (
+    <div>
+      <form onSubmit={handleSubmit} className="space-y-2">
         <div className="flex space-x-2">
           <input
             type="text"
             value={original}
             onChange={(e) => setOriginal(e.target.value)}
             placeholder="Original word"
-            className="flex-1 border-gray-300 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border rounded-md"
+            className="flex-1 border-gray-300 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border rounded-md px-4"
           />
           <input
             type="text"
             value={replacement}
             onChange={(e) => setReplacement(e.target.value)}
             placeholder="Replacement word"
-            className="flex-1 border-gray-300 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border rounded-md"
+            className="flex-1 border-gray-300 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border rounded-md px-4"
           />
-          <button type="submit" className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-            Add
-          </button>
         </div>
+        <button type="submit" className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-flex items-center justify-center">
+          <Plus size={20} className="mr-2" />
+          <span>Add Replacement</span>
+        </button>
       </form>
       {matchingItems.length > 0 && (
         <div>
           <h3 className="text-md font-semibold mb-2">Matching items in text:</h3>
-          <ul className="list-disc list-inside mb-2">
+          <ul className="list-none flex flex-col items-start mb-2">
             {matchingItems.map((item, index) => (
-              <li key={index}>{item.original}: {item.replacement}</li>
+              <li key={index} className="py-2 px-4 border-b-2 border-blue-300 hover:bg-blue-100">
+                <button className="cursor-pointer" onClick={setItemChange(item)}>{item.original} : {item.replacement}</button>
+              </li>
             ))}
           </ul>
           <button

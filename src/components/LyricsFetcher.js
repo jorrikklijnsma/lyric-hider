@@ -32,14 +32,14 @@ export const LyricsFetcher = ({ onLyricsFound }) => {
           value={artist}
           onChange={(e) => setArtist(e.target.value)}
           placeholder="Artist name"
-          className="flex-1 border-gray-300 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border rounded-md"
+          className="flex-1 border-gray-300 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border rounded-md px-4"
         />
         <input
           type="text"
           value={song}
           onChange={(e) => setSong(e.target.value)}
           placeholder="Song title"
-          className="flex-1 border-gray-300 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border rounded-md"
+          className="flex-1 border-gray-300 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border rounded-md px-4"
         />
         <button
           onClick={fetchLyrics}

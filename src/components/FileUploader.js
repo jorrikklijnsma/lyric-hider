@@ -1,5 +1,6 @@
 // components/FileUploader.js
 import { replacementData } from "../data/replacementData";
+import { Upload, UndoDot } from 'lucide-react';
 
 export const FileUploader = ({ onFileUpload }) => {
   const handleFileChange = (event) => {
@@ -24,21 +25,16 @@ export const FileUploader = ({ onFileUpload }) => {
   };
 
   return (
-    <div className="mb-4">
-      <label className="block text-sm font-medium text-gray-700">Upload JSON file</label>
-      <input
-        type="file"
-        accept=".json"
-        onChange={handleFileChange}
-        className="mt-1 block w-full text-sm text-gray-500
-                  file:mr-4 file:py-2 file:px-4
-                  file:rounded-full file:border-0
-                  file:text-sm file:font-semibold
-                  file:bg-blue-50 file:text-blue-700
-                  hover:file:bg-blue-100"
-      />
-      <button className="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm" onClick={handleDataReset}
-      >Reset to original set</button>
+    <div className="flex items-center space-x-2">
+      <label htmlFor="file-upload" className="cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-flex items-center">
+        <Upload size={20} className="mr-2" />
+        <span>Upload JSON</span>
+      </label>
+      <input id="file-upload" type="file" accept=".json" onChange={handleFileChange} className="hidden" />
+      <button className="cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-flex items-center" onClick={handleDataReset}>
+        <UndoDot size={20} className="mr-2" />
+        Reset Lists
+      </button>
     </div>
   );
 };
