@@ -5,9 +5,10 @@ import { TextDisplay } from './components/TextDisplay';
 import { ActionButtons } from './components/ActionButtons';
 import { Stats } from './components/Stats';
 import { NewReplacement } from './components/NewReplacement';
+import { replacementData } from './data/replacementData';
 
 export default function App() {
-  const [replacementOptions, setReplacementOptions] = useState({});
+  const [replacementOptions, setReplacementOptions] = useState(replacementData);
   const [currentLanguage, setCurrentLanguage] = useState('');
   const [text, setText] = useState('');
   const [processedText, setProcessedText] = useState([]);
@@ -77,7 +78,7 @@ export default function App() {
   const handleToggleAll = () => {
     setProcessedText(prev => {
       const newProcessed = prev.map(item => 
-        'original' in item ? { ...item, isReplaced: true } : item
+        'original' in item ? { ...item, isReplaced: !item.isReplaced } : item
       );
       updateStats(newProcessed);
       return newProcessed;
@@ -105,9 +106,27 @@ export default function App() {
     }));
   };
 
+  const handleCopyToClipboard = () => {
+    // format the text to be copied to clipboard with the same styling ar the original text
+    const replacedText = processedText.map(item => {
+      // if the item is a text, return the text
+      if ('text' in item) {
+        return item.text;
+      }
+
+      // the replaced text if there is a replacement
+      const replacedText = item.isReplaced ? item.replacement : item.original;
+
+      return replacedText;
+    }).join('');
+    console.log('processed:', processedText);
+    console.log('Copying to clipboard:', replacedText);
+    navigator.clipboard.writeText(replacedText);
+  }
+
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4">Text Replacement Tool</h1>
+      <h1 className="text-3xl font-bold mb-4">Lyric Hider</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <FileUploader onFileUpload={handleFileUpload} />
@@ -120,6 +139,7 @@ export default function App() {
             onPaste={() => navigator.clipboard.readText().then(handleTextChange)}
             onToggleAll={handleToggleAll}
             onToggleRandom={handleToggleRandom}
+            onCopyToClipboard={handleCopyToClipboard}
           />
         </div>
         <div>

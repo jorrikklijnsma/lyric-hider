@@ -1,12 +1,16 @@
 // components/ActionButtons.js
 import { useState } from 'react';
 
-export const ActionButtons = ({ onPaste, onToggleAll, onToggleRandom }) => {
+export const ActionButtons = ({ onPaste, onToggleAll, onToggleRandom, onCopyToClipboard }) => {
   // reactive variable for the random toggle amount
   const [randomToggleAmount, setRandomToggleAmount] = useState(5);
 
   const handleToggleAmountChange = (e) => {
     setRandomToggleAmount(e.target.value);
+  }
+
+  const handleCopyToClipboard = () => {
+    onCopyToClipboard();
   }
 
   return (
@@ -27,8 +31,10 @@ export const ActionButtons = ({ onPaste, onToggleAll, onToggleRandom }) => {
         <button onClick={() => onToggleRandom(randomToggleAmount)} className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">
           Toggle Random {randomToggleAmount}
         </button>
-
       </div>
+      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleCopyToClipboard}>
+        copy to clipboard
+      </button>
     </div>
   );
 };
