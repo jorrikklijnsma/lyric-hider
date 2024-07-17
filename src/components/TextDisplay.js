@@ -5,13 +5,13 @@ export const TextDisplay = ({ processedText, onToggleReplacement }) => {
       {processedText.map((item) => {
         if ('original' in item) {
           return (
-            <span
+            <button
               key={item.id}
               onClick={() => onToggleReplacement(item.id)}
               className={`cursor-pointer ${item.isReplaced ? 'bg-green-200' : 'bg-yellow-200'}`}
             >
               {item.isReplaced ? item.replacement : item.original}
-            </span>
+            </button>
           );
         }
         return <span key={item.id}>{item.text}</span>;

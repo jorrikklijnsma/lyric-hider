@@ -6,6 +6,8 @@ import { ActionButtons } from './components/ActionButtons';
 import { Stats } from './components/Stats';
 import { NewReplacement } from './components/NewReplacement';
 import { replacementData } from './data/replacementData';
+import { SectionAnnotationDialog } from './components/SectionAnnotationDialog';
+import { LyricsFetcher } from './components/LyricsFetcher';
 
 export default function App() {
   const [replacementOptions, setReplacementOptions] = useState(replacementData);
@@ -13,15 +15,46 @@ export default function App() {
   const [text, setText] = useState('');
   const [processedText, setProcessedText] = useState([]);
   const [stats, setStats] = useState({ total: 0, replaced: 0 });
+  const [isAnnotationDialogOpen, setIsAnnotationDialogOpen] = useState(false);
+  const [annotations, setAnnotations] = useState([]);
+
+  const handleAddAnnotation = (sectionType, annotationText) => {
+    setAnnotations([...annotations, { type: sectionType, text: annotationText }]);
+  };
+
+  const processTextWithAnnotations = () => {
+    if (!currentLanguage || !replacementOptions[currentLanguage]) {
+      return;
+    }
+
+    const words = text.split(/(\s+)/);
+    const processed = words.map((word, index) => {
+      // ... existing word processing logic
+    });
+
+    // Insert annotations
+    annotations.forEach((annotation, index) => {
+      const position = Math.floor((index + 1) * processed.length / (annotations.length + 1));
+      processed.splice(position, 0, {
+        id: `annotation-${index}`,
+        type: 'annotation',
+        sectionType: annotation.type,
+        text: annotation.text
+      });
+    });
+
+    setProcessedText(processed);
+    updateStats(processed);
+  };
 
   useEffect(() => {
+
     if (currentLanguage && text) {
       processText();
     }
-  }, [currentLanguage, text, replacementOptions]);
+  }, [currentLanguage, text, replacementOptions, annotations]);
 
   const processText = () => {
-    console.log('Processing text...');
     if (!currentLanguage || !replacementOptions[currentLanguage]) {
       return;
     }
@@ -119,10 +152,33 @@ export default function App() {
 
       return replacedText;
     }).join('');
-    console.log('processed:', processedText);
-    console.log('Copying to clipboard:', replacedText);
     navigator.clipboard.writeText(replacedText);
   }
+
+  const handleBulkReplace = (original, replacement) => {
+    setProcessedText(prevText => 
+      prevText.map(item => {
+        if ('original' in item && item.original.toLowerCase().includes(original.toLowerCase())) {
+          return { ...item, replacement, isReplaced: true };
+        }
+        return item;
+      })
+    );
+
+    setReplacementOptions(prev => ({
+      ...prev,
+      [currentLanguage]: [
+        ...prev[currentLanguage].filter(item => item.original.toLowerCase() !== original.toLowerCase()),
+        { original, replacement }
+      ]
+    }));
+
+    updateStats(processedText);
+  };
+
+  const handleLyricsFound = (lyrics) => {
+    setText(lyrics);
+  };
 
   return (
     <div className="container mx-auto p-4">
@@ -135,6 +191,7 @@ export default function App() {
             currentLanguage={currentLanguage}
             onLanguageChange={handleLanguageChange}
           />
+          <LyricsFetcher onLyricsFound={handleLyricsFound} />
           <ActionButtons
             onPaste={() => navigator.clipboard.readText().then(handleTextChange)}
             onToggleAll={handleToggleAll}
@@ -144,9 +201,19 @@ export default function App() {
         </div>
         <div>
           <Stats stats={stats} />
-          <NewReplacement onAddReplacement={handleAddReplacement} />
+          <NewReplacement 
+        onAddReplacement={handleAddReplacement} 
+        processedText={processedText}
+        onBulkReplace={handleBulkReplace}
+      />
         </div>
       </div>
+      <button
+        onClick={() => setIsAnnotationDialogOpen(true)}
+        className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Add Section Annotation
+      </button>
       <TextDisplay
         processedText={processedText}
         onToggleReplacement={handleToggleReplacement}
