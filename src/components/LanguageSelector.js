@@ -9,7 +9,7 @@ export const LanguageSelector = ({ languages, currentLanguage, onLanguageChange 
       <select
         value={currentLanguage}
         onChange={(e) => onLanguageChange(e.target.value)}
-        className="block w-full pl-3 pr-10 py-2 text-base text-white bg-blue-500 border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md cursor-pointer"
+        className="block w-full pl-3 pr-10 py-2 text-base text-white bg-violet-600 border-gray-300 focus:outline-none focus:ring-violet-600 focus:border-violet-600 sm:text-sm rounded-md cursor-pointer"
       >
         {languages.map((lang) => (
           <option key={lang} value={lang}>

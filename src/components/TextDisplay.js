@@ -8,7 +8,7 @@ export const TextDisplay = ({ processedText, onToggleReplacement }) => {
             <button
               key={item.id}
               onClick={() => onToggleReplacement(item.id)}
-              className={`cursor-pointer ${item.isReplaced ? 'bg-green-200' : 'bg-yellow-200'}`}
+              className={`cursor-pointer ${item.isReplaced ? 'bg-pink-300' : 'bg-violet-300'}`}
             >
               {item.isReplaced ? item.replacement : item.original}
             </button>

@@ -18,11 +18,11 @@ export const ActionButtons = ({ onPaste, onToggleAll, onToggleRandom, onCopyToCl
 
   return (
     <div className="flex flex-wrap mb-4 gap-2">
-      <button onClick={onPaste} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-flex items-center">
+      <button onClick={onPaste} className="bg-violet-600 hover:bg-violet-800 text-white font-bold py-2 px-4 rounded inline-flex items-center">
         <ClipboardCopy size={20} className="mr-2" />
         <span>Paste</span>
       </button>
-      <button onClick={onToggleAll} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded inline-flex items-center">
+      <button onClick={onToggleAll} className="bg-fuchsia-500 hover:bg-violet-800 text-white font-bold py-2 px-4 rounded inline-flex items-center">
         <RefreshCw size={20} className="mr-2" />
         <span>Toggle All</span>
       </button>
@@ -34,11 +34,11 @@ export const ActionButtons = ({ onPaste, onToggleAll, onToggleRandom, onCopyToCl
         </input>
 
       </div>
-        <button onClick={() => onToggleRandom(randomToggleAmount)} className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded inline-flex items-center">
+        <button onClick={() => onToggleRandom(randomToggleAmount)} className="bg-pink-500 hover:bg-violet-800 text-white font-bold py-2 px-4 rounded inline-flex items-center">
           <Shuffle size={20} className="mr-2" />
           <span>Random ({randomToggleAmount})</span>
         </button>
-      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-flex items-center" onClick={handleCopyToClipboard}>
+      <button className="bg-violet-600 hover:bg-violet-800 text-white font-bold py-2 px-4 rounded inline-flex items-center" onClick={handleCopyToClipboard}>
         <ClipboardCopy size={20} className="mr-2" />
         <span>Copy</span>
       </button>

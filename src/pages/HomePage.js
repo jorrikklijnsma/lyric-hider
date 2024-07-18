@@ -9,7 +9,7 @@ export default function HomePage() {
       <h1 className="text-4xl font-bold mb-2">Welcome to the Lyric Hider</h1>
       <h2 className="text-2xl font-semibold">Hide lyrics from your favorite songs</h2>
       <p className='max-w-96'>Hide lyrics from your favorite songs with our tool. you can easaly import your lyrics and use one of the existing word sets to replace existing words to phonetic equivalents.</p>
-      <Link to="/tool" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      <Link to="/tool" className="bg-violet-600 hover:bg-violet-800 text-white font-bold py-2 px-4 rounded">
         Get Started
       </Link>
       <h2 className="text-2xl font-semibold mt-4">How it works</h2>

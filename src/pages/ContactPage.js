@@ -17,10 +17,10 @@ export default function ContactPage() {
       <p className="mb-4">For years my mind was overflowing with ideas and during the last year large language models gave me the opportunity to bring some of these ideas to life.</p>
       <p className="mb-4">If you would like to know more about how you can turn your ideas into reality, feel free to reach out.</p>
       <ul className="mb-4 list-none">
-        <li>Personal website: <a href="https://www.jorrikklijnsma.com" target='_blank' className='group text-blue-500 inline-flex items-center' rel="noreferrer">more about me<ChevronRight size={16} className='inline-block transition-transform group-hover:translate-x-2' /></a></li>
-        <li>LinkedIn: <a href="https://www.linkedin.com/in/jorrik-klijnsma/" target='_blank' className='group text-blue-500 inline-flex items-center' rel="noreferrer">for connecting<ChevronRight size={16} className='inline-block transition-transform group-hover:translate-x-2' /></a></li>
-        <li>Codepen: <a href="https://codepen.io/jorrikklijnsma" target='_blank' className='group text-blue-500 inline-flex items-center' rel="noreferrer">Small code snippets<ChevronRight size={16} className='inline-block transition-transform group-hover:translate-x-2' /></a></li>
-        <li>GitHub: <a href="https://www.github.com/jorrikklijnsma" target='_blank' className='group text-blue-500 inline-flex items-center' rel="noreferrer">Nerdy stuff<ChevronRight size={16} className='inline-block transition-transform group-hover:translate-x-2' /></a></li>
+        <li>Personal website: <a href="https://www.jorrikklijnsma.com" target='_blank' className='group text-violet-600 inline-flex items-center' rel="noreferrer">more about me<ChevronRight size={16} className='inline-block transition-transform group-hover:translate-x-2' /></a></li>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/jorrik-klijnsma/" target='_blank' className='group text-violet-600 inline-flex items-center' rel="noreferrer">for connecting<ChevronRight size={16} className='inline-block transition-transform group-hover:translate-x-2' /></a></li>
+        <li>Codepen: <a href="https://codepen.io/jorrikklijnsma" target='_blank' className='group text-violet-600 inline-flex items-center' rel="noreferrer">Small code snippets<ChevronRight size={16} className='inline-block transition-transform group-hover:translate-x-2' /></a></li>
+        <li>GitHub: <a href="https://www.github.com/jorrikklijnsma" target='_blank' className='group text-violet-600 inline-flex items-center' rel="noreferrer">Nerdy stuff<ChevronRight size={16} className='inline-block transition-transform group-hover:translate-x-2' /></a></li>
       </ul>
       </section>
 

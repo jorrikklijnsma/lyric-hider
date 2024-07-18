@@ -26,12 +26,12 @@ export const FileUploader = ({ onFileUpload }) => {
 
   return (
     <div className="flex items-center space-x-2">
-      <label htmlFor="file-upload" className="cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-flex items-center">
+      <label htmlFor="file-upload" className="cursor-pointer bg-violet-600 hover:bg-violet-800 text-white font-bold py-2 px-4 rounded inline-flex items-center">
         <Upload size={20} className="mr-2" />
         <span>Upload JSON</span>
       </label>
       <input id="file-upload" type="file" accept=".json" onChange={handleFileChange} className="hidden" />
-      <button className="cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-flex items-center" onClick={handleDataReset}>
+      <button className="cursor-pointer bg-violet-600 hover:bg-violet-800 text-white font-bold py-2 px-4 rounded inline-flex items-center" onClick={handleDataReset}>
         <UndoDot size={20} className="mr-2" />
         Reset Lists
       </button>

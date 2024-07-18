@@ -172,7 +172,7 @@ export default function ReplacementTool() {
       <h1 className="text-3xl font-bold mb-6">Hide Lyrics</h1>
       
       <div className="space-y-4">
-        <div className='flex gap-4'>
+        <div className='flex gap-y-1 gap-x-4 flex-wrap'>
           <SectionHeader title="Input Options" section="input" />
           <SectionHeader title="Text Actions" section="actions" />
           <SectionHeader title="Get Lyrics" section="lyrics" />
