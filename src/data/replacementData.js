@@ -302,7 +302,7 @@ const english_set = [
         { "original": "wee", "replacement": "we"},
         { "original": "week", "replacement": "weak"},
         { "original": "weigh", "replacement": "way"},
-        { "original": "weigth", "replacement": "wait"},
+        { "original": "weight", "replacement": "wait"},
         { "original": "went", "replacement": "wend"},
         { "original": "were", "replacement": "wear"},
         { "original": "what", "replacement": "watt"},
@@ -321,6 +321,8 @@ const english_set = [
         { "original": "wood", "replacement": "would"},
         { "original": "would", "replacement": "wood"},
         { "original": "you're", "replacement": "your"},
+        { "original": "we're", "replacement": "wear"},
+        { "original": "we'll", "replacement": "will"},
         { "original": "you", "replacement": "U"},
         { "original": "your", "replacement": "you're"},
 ]
